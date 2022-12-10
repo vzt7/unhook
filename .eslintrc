@@ -1,5 +1,8 @@
 {
-  "extends": [
-    "@nuxtjs/eslint-config-typescript"
-  ]
+  "extends": ["typescript"],
+  "ignorePatterns": ["src/**/*.test.*", "src/**/*.spec.*"],
+  "rules": {
+    "semi": [2, "always"],
+    "@typescript-eslint/ban-ts-comment": 0
+  }
 }
