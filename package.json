@@ -1,8 +1,8 @@
 {
-  "name": "packageName",
+  "name": "unhook",
   "version": "0.0.0",
-  "description": "",
-  "repository": "unjs/packageName",
+  "description": "Just a little module for plugins.",
+  "repository": "vzt7/unhook",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -22,15 +22,17 @@
   "scripts": {
     "build": "unbuild",
     "dev": "vitest dev",
-    "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
+    "lint": "eslint --ext .ts,.js,.mjs,.cjs ./src",
     "prepack": "unbuild",
     "release": "pnpm test && standard-version && git push --follow-tags && pnpm publish",
     "test": "pnpm lint && vitest run --coverage"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
     "@vitest/coverage-c8": "^0.25.6",
     "eslint": "^8.29.0",
+    "eslint-config-typescript": "^3.0.0",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",
     "unbuild": "^1.0.2",
