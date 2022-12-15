@@ -1,4 +1,4 @@
-interface InternalTap {
+export interface InternalTap {
   name: string;
   /** @internal */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -7,15 +7,18 @@ interface InternalTap {
   before?: InternalTap['name'] | InternalTap['name'][];
 }
 
-interface Tap extends Partial<InternalTap> {
+export interface Tap extends Partial<InternalTap> {
   name: string;
   stage?: number;
 }
 
 export abstract class Hook<Args extends unknown[] = [], Returns = void> {
-  protected _interceptor: Parameters<typeof this['intercept']>['0'][] = [];
+  /** @internal */
+  protected readonly _interceptor: Parameters<typeof this['intercept']>['0'][] = [];
+  /** @internal */
   protected readonly _taps: InternalTap[] = [];
 
+  /** @internal */
   protected _wrap(data: InternalTap) {
     const { fn } = data;
     const interceptorHook = (...args: Args) => this._interceptor?.forEach((item) => item?.call?.call(null, ...args));
@@ -28,7 +31,8 @@ export abstract class Hook<Args extends unknown[] = [], Returns = void> {
     };
   }
 
-  private _tap(data: InternalTap) {
+  /** @internal */
+  protected _tap(data: InternalTap) {
     data = this._wrap(data);
     this._interceptor?.forEach((item) => item?.register?.call(null, data));
     this._interceptor?.forEach((item) => item?.tap?.call(null, data));
