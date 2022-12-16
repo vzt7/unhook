@@ -1,6 +1,6 @@
 {
   "name": "patable",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Just a little module for plugins.",
   "repository": "vzt7/patable",
   "license": "MIT",
@@ -24,7 +24,8 @@
     "dev": "vitest dev",
     "lint": "eslint --ext .ts,.js,.mjs,.cjs ./src",
     "prepack": "unbuild",
-    "release": "pnpm test && standard-version && git push --follow-tags && pnpm publish",
+    "version": "standard-version",
+    "release": "pnpm test && git push --follow-tags && pnpm publish",
     "test": "pnpm lint && vitest run --coverage"
   },
   "devDependencies": {

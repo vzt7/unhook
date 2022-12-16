@@ -3,31 +3,91 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions][github-actions-src]][github-actions-href]
-[![Codecov][codecov-src]][codecov-href]
+<!-- [![Codecov][codecov-src]][codecov-href] -->
 
 > The patable package expose many Hook classes, which can be used to create hooks for plugins.
 
-## Installation
+## 📦 Installation
 
 ```sh
-# npm
-npm install patable
+# with pnpm
+pnpm install patable
 
-# yarn
+# with yarn
 yarn add patable
 
-# pnpm
-pnpm install patable
+# with npm
+npm install patable
 ```
 
-## Usage
+## ⚡️ Usage
 
-```js
-// ESM
-import { AsyncParallelBailHook, AsyncParallelHook, AsyncSeriesBailHook, AsyncSeriesHook, AsyncSeriesWaterfallHook } from 'patable';
+Almost refer to [tapable](https://github.com/webpack/tapable).
 
-// CommonJS
-const { AsyncParallelBailHook, AsyncParallelHook, AsyncSeriesBailHook, AsyncSeriesHook, AsyncSeriesWaterfallHook } = require('patable');
+- AsyncParallelBailHook
+- AsyncParallelHook
+- AsyncSeriesBailHook
+- AsyncSeriesHook
+- AsyncSeriesWaterfallHook
+- _TODO: Sync hooks_
+
+```ts
+import { AsyncSeriesHook } from 'patable';
+
+const hook = new AsyncSeriesHook();
+
+hook.tap('say', () => {
+  console.log('Hello World');
+});
+
+hook.tap('scream', () => {
+  console.log('Hello World!!!');
+});
+
+hook.dispatch();
+
+
+// Hello World
+// Hello World!!!
+
+```
+
+Every hooks only the dispatch method is different implementation, all follow the usage below.
+
+```ts
+import { AsyncSeriesHook } from 'patable';
+
+type Args = [string]; // Args of every fn
+type Returns = string; // Returns of every fn
+
+const hook = new AsyncSeriesHook<Args, Returns>();
+
+hook.tap('say', (arg0) => {
+  console.log('Hello World');
+});
+
+hook.tap('scream', (arg0) => {
+  console.log('Hello World!!!');
+  return 'screaming';
+});
+
+hook.tap({ name: 'smile', stage: -10 }, async (arg0) => {
+  return 'smiling';
+});
+
+hook.tap({ name: 'silent', before: 'scream' }, (arg0) => {
+  console.log(arg0);
+});
+
+hook.dispatch('Anyone else').then((result) => {
+  console.log(result); // ['smiling', undefined, undefined, 'screaming'];
+});
+
+
+// Hello World
+// Anyone else
+// Hello World!!!
+
 ```
 
 ## 💻 Development
@@ -39,7 +99,7 @@ const { AsyncParallelBailHook, AsyncParallelHook, AsyncSeriesBailHook, AsyncSeri
 
 ## License
 
-Made with 💛
+Made with ❤
 
 Published under [MIT License](./LICENSE).
 
