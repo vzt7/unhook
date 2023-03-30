@@ -90,7 +90,7 @@ export abstract class Hook<Fn extends (...args: any[]) => any, Args extends Para
     options: {
       register?: (tap: Tap) => Tap;
       tap?: (tap: Tap) => void;
-      call?: Fn;
+      call?: (...args: Args) => void;
     } = {}
   ) {
     this._interceptor.push({ ...options });
