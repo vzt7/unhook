@@ -1,7 +1,7 @@
 import { AsyncParallelHook } from './AsyncParallelHook';
 
 describe('AsyncParallelHook', () => {
-  const hook = new AsyncParallelHook<[number, string], number>();
+  const hook = new AsyncParallelHook<(arg0: number, arg1: string) => number>();
 
   const fn0 = vi.fn((a, b) => {
     return 0;

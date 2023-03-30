@@ -3,6 +3,7 @@
   "ignorePatterns": ["src/**/*.test.*", "src/**/*.spec.*"],
   "rules": {
     "semi": [2, "always"],
-    "@typescript-eslint/ban-ts-comment": 0
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }

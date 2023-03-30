@@ -1,7 +1,7 @@
 import { AsyncParallelBailHook } from './AsyncParallelBailHook';
 
 describe('AsyncParallelBailHook', () => {
-  const hook = new AsyncParallelBailHook<[number, string]>();
+  const hook = new AsyncParallelBailHook<(arg0: number, arg1: string) => void>();
 
   const fn0 = vi.fn((a, b) => {
     return;

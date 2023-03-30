@@ -1,7 +1,7 @@
 import { AsyncSeriesBailHook } from './AsyncSeriesBailHook';
 
 describe('AsyncSeriesBailHook', () => {
-  const hook = new AsyncSeriesBailHook<[number, string]>();
+  const hook = new AsyncSeriesBailHook<(arg0: number, arg1: string) => void>();
 
   const fn0 = vi.fn((a, b) => {
     return;
