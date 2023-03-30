@@ -1,7 +1,7 @@
 import { AsyncSeriesWaterfallHook } from './AsyncSeriesWaterfallHook';
 
 describe('AsyncSeriesWaterfallHook', () => {
-  const hook = new AsyncSeriesWaterfallHook<[string], number>();
+  const hook = new AsyncSeriesWaterfallHook<(arg0: string) => number>();
 
   const fn0 = vi.fn((arg0) => {
     return 0;

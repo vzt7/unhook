@@ -1,8 +1,8 @@
 import Hook from './Hook';
 
-export class AsyncParallelHook<Args extends unknown[], Returns> extends Hook<Args, Returns> {
-  async dispatch(...args: Args) {
-    return Promise.all<Returns>(this.taps.map(({ fn }) => fn(...args)));
+export class AsyncParallelHook<Fn extends (...args: any[]) => any> extends Hook<Fn> {
+  async dispatch(...args: Parameters<Fn>) {
+    return Promise.all<ReturnType<Fn>>(this.taps.map(({ fn }) => fn(...args)));
   }
 }
 
