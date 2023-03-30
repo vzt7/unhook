@@ -52,7 +52,7 @@ hook.dispatch();
 
 ```
 
-Every hooks only the dispatch method is different implementation, all follow the usage below.
+Every hook only the dispatch method is different implementation, and all follow the usage below.
 
 ```ts
 import { AsyncSeriesHook } from 'patable';
