@@ -15,10 +15,10 @@ export function waterfall<T>(items: ((arg: T) => T)[]) {
   return (arg: T) => next(arg);
 }
 
-export class AsyncSeriesWaterfallHook<Args extends unknown[], Returns> extends Hook<Args, Returns> {
-  async dispatch(arg0: Args[0]) {
+export class AsyncSeriesWaterfallHook<Fn extends (...args: any[]) => any> extends Hook<Fn> {
+  async dispatch(arg0: Parameters<Fn>[0]) {
     const taps = this.taps.map(({ fn }) => fn);
-    return waterfall(taps)(arg0);
+    return waterfall<typeof arg0>(taps)(arg0);
   }
 }
 

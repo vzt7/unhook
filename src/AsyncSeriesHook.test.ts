@@ -1,7 +1,7 @@
 import { AsyncSeriesHook } from './AsyncSeriesHook';
 
 describe('AsyncSeriesHook', () => {
-  const hook = new AsyncSeriesHook<[number, string], number>();
+  const hook = new AsyncSeriesHook<(arg0: number, arg1: string) => number>();
 
   const fn0 = vi.fn((a, b) => {
     return 0;

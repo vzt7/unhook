@@ -1,8 +1,8 @@
 import Hook from './Hook';
 
-export class AsyncSeriesHook<Args extends unknown[], Returns> extends Hook<Args, Returns> {
-  async dispatch(...args: Args) {
-    const returns: Returns[] = [];
+export class AsyncSeriesHook<Fn extends (...args: any[]) => any> extends Hook<Fn> {
+  async dispatch(...args: Parameters<Fn>) {
+    const returns: ReturnType<Fn>[] = [];
     for (const { fn } of this.taps) {
       returns.push(await fn(...args));
     }

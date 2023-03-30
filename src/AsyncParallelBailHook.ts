@@ -1,9 +1,9 @@
 import Hook from './Hook';
 
-export class AsyncParallelBailHook<Args extends unknown[]> extends Hook<Args, void> {
-  async dispatch(...args: Args) {
+export class AsyncParallelBailHook<Fn extends (...args: any[]) => any> extends Hook<Fn> {
+  async dispatch(...args: Parameters<Fn>) {
     return Promise.race(
-      this._taps.map(
+      this.taps.map(
         ({ fn }) =>
           new Promise<void>((resolve) => {
             return Promise.resolve(fn(...args)).then((result: unknown) => {
