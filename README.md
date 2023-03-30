@@ -3,6 +3,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions][github-actions-src]][github-actions-href]
+
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
 > The patable package expose many Hook classes, which can be used to create hooks for plugins.
@@ -46,10 +47,8 @@ hook.tap('scream', () => {
 
 hook.dispatch();
 
-
 // Hello World
 // Hello World!!!
-
 ```
 
 Every hook only the dispatch method is different implementation, and all follow the usage below.
@@ -57,12 +56,9 @@ Every hook only the dispatch method is different implementation, and all follow 
 ```ts
 import { AsyncSeriesHook } from 'patable';
 
-type Args = [string]; // Args of every fn
-type Returns = string; // Returns of every fn
+const hook = new AsyncSeriesHook<(arg0: string) => string>();
 
-const hook = new AsyncSeriesHook<Args, Returns>();
-
-hook.tap('say', (arg0) => {
+hook.tap({ name: 'say', once: true }, (arg0) => {
   console.log('Hello World');
 });
 
@@ -83,11 +79,9 @@ hook.dispatch('Anyone else').then((result) => {
   console.log(result); // ['smiling', undefined, undefined, 'screaming'];
 });
 
-
 // Hello World
 // Anyone else
 // Hello World!!!
-
 ```
 
 ## 💻 Development
