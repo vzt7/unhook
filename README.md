@@ -6,7 +6,13 @@
 
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
-> The patable package expose many Hook classes, which can be used to create hooks for plugins.
+> Can be used to create hooks for plugins.
+
+## 🦭 Why ?
+
+- ✅ Get all returns of each hook.
+- ✅ Types friendly, specify the hook type you want.
+- ✅ Almost likes [tapable](https://github.com/webpack/tapable), more light & clear.
 
 ## 📦 Installation
 
@@ -51,7 +57,7 @@ hook.dispatch();
 // Hello World!!!
 ```
 
-Every hook only the dispatch method is different implementation, and all follow the usage below.
+Only the dispatch method is different implementation for each hook, and all hooks follow the usage below.
 
 ```ts
 import { AsyncSeriesHook } from 'patable';
@@ -93,9 +99,23 @@ hook.dispatch('Anyone else').then((result) => {
 
 ## License
 
-Made with ❤
+Published under [WTFPL](./LICENSE).
 
-Published under [MIT License](./LICENSE).
+```
+           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                   Version 2, December 2004
+
+Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+Everyone is permitted to copy and distribute verbatim or modified
+copies of this license document, and changing it is allowed as long
+as the name is changed.
+
+           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+ 0. You just DO WHAT THE FUCK YOU WANT TO.
+```
 
 <!-- Badges -->
 
