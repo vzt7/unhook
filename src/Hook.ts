@@ -6,10 +6,14 @@ export interface InternalTap {
   once?: boolean;
   stage: number;
   before?: InternalTap['name'] | InternalTap['name'][];
-  _freeze?: boolean;
+  _frozen?: boolean;
+  _fixed?: boolean;
+  _before_tap?: InternalTap;
 }
 
-export interface Tap extends Partial<Omit<InternalTap, '_freeze'>> {
+type OmitUnderscore<T> = T extends `_${string}` ? never : T;
+
+export interface Tap extends Partial<Pick<InternalTap, OmitUnderscore<keyof InternalTap>>> {
   name: string;
   stage?: number;
 }
@@ -28,7 +32,7 @@ export abstract class Hook<Fn extends (...args: any[]) => any, Args extends Para
       ...data,
       fn: function (...args: Args) {
         if (wrappedData.once) {
-          wrappedData._freeze = true;
+          wrappedData._frozen = true;
         }
         interceptorHook?.(...args);
         return fn(...args);
@@ -44,10 +48,15 @@ export abstract class Hook<Fn extends (...args: any[]) => any, Args extends Para
     this._interceptor?.forEach((item) => item?.tap?.call(null, data));
 
     const isTargetTap = (item: InternalTap) => {
-      if (Array.isArray(data.before) ? data.before.includes(item.name) : data.before === item.name) {
-        return true;
+      if (data.before) {
+        if (Array.isArray(data.before) ? data.before.includes(item.name) : data.before === item.name) {
+          data._before_tap = item;
+          data._fixed = true;
+          return true;
+        }
       }
-      if (data.stage === 0 && item.stage !== 0) {
+      /** Skip stage comparison if item order is fixed */
+      if (item._fixed) {
         return false;
       }
       return data.stage < item.stage;
@@ -67,7 +76,7 @@ export abstract class Hook<Fn extends (...args: any[]) => any, Args extends Para
   }
 
   get taps() {
-    return this._taps.filter((item) => !item._freeze);
+    return this._taps.filter((item) => !item._frozen);
   }
 
   tap(name: string | Tap, fn: Fn) {
