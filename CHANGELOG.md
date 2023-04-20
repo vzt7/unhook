@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.1.1 (2023-04-20)
+
+
+### Bug Fixes
+
+* 🐛 Using both before and stage causes incorrected order ([0497f84](https://github.com/vzt7/patable/commit/0497f847471d7bd903784079d24dc42ec09f3574))
+
 ## 0.1.0 (2023-03-30)
 
 
