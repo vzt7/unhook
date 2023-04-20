@@ -18,13 +18,13 @@
 
 ```sh
 # with pnpm
-pnpm install unhook
+pnpm install @vzt7/unhook
 
 # with yarn
-yarn add unhook
+yarn add @vzt7/unhook
 
 # with npm
-npm install unhook
+npm install @vzt7/unhook
 ```
 
 ## ⚡️ Usage
@@ -39,7 +39,7 @@ Almost refer to [tapable](https://github.com/webpack/tapable).
 - _TODO: Sync hooks_
 
 ```ts
-import { AsyncSeriesHook } from 'unhook';
+import { AsyncSeriesHook } from '@vzt7/unhook';
 
 const hook = new AsyncSeriesHook();
 
@@ -60,7 +60,7 @@ hook.dispatch();
 Only the dispatch method is different implementation for each hook, and all hooks follow the usage below.
 
 ```ts
-import { AsyncSeriesHook } from 'unhook';
+import { AsyncSeriesHook } from '@vzt7/unhook';
 
 const hook = new AsyncSeriesHook<(arg0: string) => string>();
 
@@ -119,11 +119,11 @@ as the name is changed.
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/unhook?style=flat-square
-[npm-version-href]: https://npmjs.com/package/unhook
-[npm-downloads-src]: https://img.shields.io/npm/dm/unhook?style=flat-square
-[npm-downloads-href]: https://npmjs.com/package/unhook
-[github-actions-src]: https://img.shields.io/github/workflow/status/unjs/unhook/ci/main?style=flat-square
-[github-actions-href]: https://github.com/unjs/unhook/actions?query=workflow%3Aci
-[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/unhook/main?style=flat-square
-[codecov-href]: https://codecov.io/gh/unjs/unhook
+[npm-version-src]: https://img.shields.io/npm/v/@vzt7/unhook?style=flat-square
+[npm-version-href]: https://npmjs.com/package/@vzt7/unhook
+[npm-downloads-src]: https://img.shields.io/npm/dm/@vzt7/unhook?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/@vzt7/unhook
+[github-actions-src]: https://img.shields.io/github/workflow/status/unjs/@vzt7/unhook/ci/main?style=flat-square
+[github-actions-href]: https://github.com/unjs/@vzt7/unhook/actions?query=workflow%3Aci
+[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/@vzt7/unhook/main?style=flat-square
+[codecov-href]: https://codecov.io/gh/unjs/@vzt7/unhook
