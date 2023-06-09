@@ -3,6 +3,14 @@
   "version": "0.1.1",
   "description": "Just a little module for plugins.",
   "repository": "vzt7/unhook",
+  "keywords": [
+    "plugin",
+    "hook",
+    "plugin-system",
+    "tapable",
+    "hookable",
+    "unhook"
+  ],
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
