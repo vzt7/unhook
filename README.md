@@ -10,9 +10,9 @@
 
 ## 🦭 Why ?
 
-- ✅ Get all returns of each hook.
-- ✅ Types friendly, specify the hook type you want.
-- ✅ Almost likes [tapable](https://github.com/webpack/tapable), more light & clear.
+- ✅ 获取每个钩子的返回值。 Get all returns of each hook.
+- ✅ 类型友好，可指定你的钩子类型。 Types friendly, specify the hook type you want.
+- ✅ 可扩展出你的定制钩子。 Extends to create a hook you need.
 
 ## 📦 Installation
 
@@ -29,8 +29,9 @@ npm install @vzt7/unhook
 
 ## ⚡️ Usage
 
-Almost refer to [tapable](https://github.com/webpack/tapable).
+你可以使用各种类型的钩子。 The following hooks you can use.
 
+- Hook _(Abstract)_
 - AsyncParallelBailHook
 - AsyncParallelHook
 - AsyncSeriesBailHook
@@ -57,7 +58,7 @@ hook.dispatch();
 // Hello World!!!
 ```
 
-Only the dispatch method is different implementation for each hook, and all hooks follow the usage below.
+每个钩子只有 dispatch 方法不同，所以全部钩子都遵循下面的用法。 All hooks follow the usage below, only the dispatch method of each hook is different implementation.
 
 ```ts
 import { AsyncSeriesHook } from '@vzt7/unhook';
@@ -87,7 +88,29 @@ hook.dispatch('Anyone else').then((result) => {
 
 // Hello World
 // Anyone else
+//
 // Hello World!!!
+// ['smiling', undefined, undefined, 'screaming'];
+```
+
+你也可以基于基础钩子扩展出你自己的钩子。 Extends the basic hook to create your own.
+
+```ts
+import { Hook } from '@vzt7/unhook';
+
+class CustomHook<Fn extends (...args: any[]) => any> extends Hook<Fn> {
+  dispatch(...args: any) {
+    return Promise.all<ReturnType<Fn>>(this.taps.map(({ fn }) => fn(...args)));
+  }
+}
+
+const hook = new CustomHook();
+
+hook.tap('foo', () => {
+  return 'foo results';
+});
+
+const result = await hook.dispatch(); // ['foo results'];
 ```
 
 ## 💻 Development
