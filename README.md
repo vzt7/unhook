@@ -3,16 +3,15 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions][github-actions-src]][github-actions-href]
-
-<!-- [![Codecov][codecov-src]][codecov-href] -->
+[![Codecov][codecov-src]][codecov-href]
 
 > Can be used to create hooks for plugins.
 
 ## 🦭 Why ?
 
-- ✅ 获取每个钩子的返回值。 Get all returns of each hook.
-- ✅ 类型友好，可指定你的钩子类型。 Types friendly, specify the hook type you want.
-- ✅ 可扩展出你的定制钩子。 Extends to create a hook you need.
+- ✅ Get all returns of each hook.
+- ✅ Types friendly, specify the hook type you want.
+- ✅ Extends to create a hook you need.
 
 ## 📦 Installation
 
@@ -29,7 +28,7 @@ npm install @vzt7/unhook
 
 ## ⚡️ Usage
 
-你可以使用各种类型的钩子。 The following hooks you can use.
+The following hooks you can use.
 
 - Hook _(Abstract)_
 - AsyncParallelBailHook
@@ -58,7 +57,7 @@ hook.dispatch();
 // Hello World!!!
 ```
 
-每个钩子只有 dispatch 方法不同，所以全部钩子都遵循下面的用法。 All hooks follow the usage below, only the dispatch method of each hook is different implementation.
+All hooks follow the usage below, only the dispatch method of each hook is different implementation.
 
 ```ts
 import { AsyncSeriesHook } from '@vzt7/unhook';
@@ -93,7 +92,7 @@ hook.dispatch('Anyone else').then((result) => {
 // ['smiling', undefined, undefined, 'screaming'];
 ```
 
-你也可以基于基础钩子扩展出你自己的钩子。 Extends the basic hook to create your own.
+Extends the basic hook to create your own.
 
 ```ts
 import { Hook } from '@vzt7/unhook';
@@ -146,7 +145,7 @@ as the name is changed.
 [npm-version-href]: https://npmjs.com/package/@vzt7/unhook
 [npm-downloads-src]: https://img.shields.io/npm/dm/@vzt7/unhook?style=flat-square
 [npm-downloads-href]: https://npmjs.com/package/@vzt7/unhook
-[github-actions-src]: https://img.shields.io/github/workflow/status/unjs/@vzt7/unhook/ci/main?style=flat-square
-[github-actions-href]: https://github.com/unjs/@vzt7/unhook/actions?query=workflow%3Aci
-[codecov-src]: https://img.shields.io/codecov/c/gh/unjs/@vzt7/unhook/main?style=flat-square
-[codecov-href]: https://codecov.io/gh/unjs/@vzt7/unhook
+[github-actions-src]: https://github.com/vzt7/unhook/actions/workflows/ci.yml/badge.svg
+[github-actions-href]: https://github.com/vzt7/unhook/actions
+[codecov-src]: https://codecov.io/gh/vzt7/unhook/branch/main/graph/badge.svg?token=1IKH46O19F
+[codecov-href]: https://codecov.io/gh/vzt7/unhook
