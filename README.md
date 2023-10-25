@@ -5,13 +5,13 @@
 [![Github Actions][github-actions-src]][github-actions-href]
 [![Codecov][codecov-src]][codecov-href]
 
-> Can be used to create hooks for plugins.
+[@vzt7/unhook](https://github.com/vzt7/unhook) is an alternative to [tapable](https://github.com/webpack/tapable).
 
-## 🦭 Why ?
+## 🦭 Why
 
 - ✅ Get all returns of each hook.
 - ✅ Types friendly, specify the hook type you want.
-- ✅ Extends to create a hook you need.
+- ✅ Extends the basic hook to customize a hook you need.
 
 ## 📦 Installation
 
@@ -31,12 +31,16 @@ npm install @vzt7/unhook
 The following hooks you can use.
 
 - Hook _(Abstract)_
-- AsyncParallelBailHook
+- SyncHook
+- SyncBailHook
+- SyncLoopHook
+- SyncWaterfallHook
 - AsyncParallelHook
-- AsyncSeriesBailHook
+- AsyncParallelBailHook
 - AsyncSeriesHook
+- AsyncSeriesBailHook
+- AsyncSeriesLoopHook
 - AsyncSeriesWaterfallHook
-- _TODO: Sync hooks_
 
 ```ts
 import { AsyncSeriesHook } from '@vzt7/unhook';
@@ -141,9 +145,9 @@ as the name is changed.
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@vzt7/unhook?style=flat-square
+[npm-version-src]: https://badgen.net/npm/v/@vzt7/unhook
 [npm-version-href]: https://npmjs.com/package/@vzt7/unhook
-[npm-downloads-src]: https://img.shields.io/npm/dm/@vzt7/unhook?style=flat-square
+[npm-downloads-src]: https://badgen.net/npm/dt/@vzt7/unhook
 [npm-downloads-href]: https://npmjs.com/package/@vzt7/unhook
 [github-actions-src]: https://github.com/vzt7/unhook/actions/workflows/ci.yml/badge.svg
 [github-actions-href]: https://github.com/vzt7/unhook/actions

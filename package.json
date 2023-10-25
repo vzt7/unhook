@@ -11,7 +11,7 @@
     "hookable",
     "unhook"
   ],
-  "license": "MIT",
+  "license": "WTFPL",
   "sideEffects": false,
   "type": "module",
   "exports": {
