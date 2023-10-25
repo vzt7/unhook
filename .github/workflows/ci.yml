@@ -18,10 +18,11 @@ jobs:
         with:
           node-version: 16
           cache: 'pnpm'
-      - run: pnpm install
+      - run: pnpm -v
+      - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm build
-      - run: pnpm vitest --coverage
+      - run: pnpm vitest run --coverage
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
