@@ -1,0 +1,22 @@
+import { SyncHook } from './SyncHook';
+
+describe('SyncHook', () => {
+  const hook = new SyncHook<(arg0: number, arg1: string) => number>();
+
+  const fn0 = vi.fn((a, b) => {
+    return 0;
+  });
+  hook.tap('hook0', fn0);
+
+  const fn1 = vi.fn((a, b) => {
+    return 1;
+  });
+  hook.tap('hook1', fn1);
+
+  it('dispatch', () => {
+    const results = hook.dispatch(7274, 'foo');
+    expect(fn0).toHaveBeenCalledWith(7274, 'foo');
+    expect(fn1).toHaveBeenCalledWith(7274, 'foo');
+    expect(results).toStrictEqual([0, 1]);
+  });
+});
