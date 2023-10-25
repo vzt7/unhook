@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
+    "build": "unbuild --minify --sourcemap",
     "dev": "vitest dev",
     "lint": "eslint --ext .ts,.js,.mjs,.cjs ./src",
     "prepack": "unbuild",
@@ -44,7 +44,7 @@
     "eslint-config-typescript": "^3.0.0",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.4",
-    "unbuild": "^1.0.2",
+    "unbuild": "^2.0.0",
     "vitest": "^0.25.6"
   },
   "packageManager": "pnpm@7.18.1"
