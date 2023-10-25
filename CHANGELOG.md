@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/vzt7/unhook/compare/v0.1.3...v0.2.0) (2023-10-25)
+
+
+### Features
+
+* 🎸 add sync hooks ([35665e1](https://github.com/vzt7/unhook/commit/35665e166a657741f89139380f72c0dd085782c2))
+
 ### [0.1.3](https://github.com/vzt7/unhook/compare/v0.1.2...v0.1.3) (2023-06-20)
 
 ### [0.1.2](https://github.com/vzt7/unhook/compare/v0.1.1...v0.1.2) (2023-06-09)
